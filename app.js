@@ -21,7 +21,9 @@ module.exports = {
     css: '*(**/)*.sss'
   },
   ignore: ['**/layout.sgr', '**/_*', '**/.*', '_cache/**', 'readme.md', 'yarn.lock'],
-  reshape: htmlStandards({ webpack: ctx, locals: collections.locals(ctx, locals) }),
+  reshape: htmlStandards({
+    locals: (ctx) => { return collections.locals(ctx, locals) }
+  }),
   postcss: cssStandards(),
   babel: { presets: [[jsStandards, { modules: false }]] },
   plugins: [collections]
